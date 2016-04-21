@@ -1,0 +1,10 @@
+cxxtestgen --error-printer -o runner.cpp *.h
+
+g++ runner.cpp ../../src/SerialImplementation/Mandelbrot/Structures/Complex.cpp ../../src/SerialImplementation/Mandelbrot/Structures/mandelbrot.h -std=c++11 -o runner -I/usr/include/cxxtestgen
+
+chmod 777 runner
+./runner
+
+rm -f ../../src/SerialImplementation/Mandelbrot/Structures/*.o
+rm -f runner.cpp
+rm -f runner
