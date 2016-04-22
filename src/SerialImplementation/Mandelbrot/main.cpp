@@ -14,11 +14,9 @@ int main(int argc, char** argv)
 		printf("Wrong number of arguments, correct number is: 1- width, 2 height\n");
 		return 0;
 	}
-	else
-	{
-		width = atoi(argv[1]);
-		height = atoi(argv[2]);
-	}
+	width = atoi(argv[1]);
+	height = atoi(argv[2]);
+
 	mainTimer.Start();
 	auto results = (char*)_mm_malloc(sizeof(char) * width * height, ALLOC_ALIGN);
 	Mandelbrot(results, 0, width, height);
