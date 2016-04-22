@@ -15,12 +15,9 @@ int main(int argc, char** argv) {
         printf("Wrong number of arguments, correct number is: 1- sizeOfArray 2- numberOfArrays\n");
         return 0;
     }
-    else {
-        arraySize = atoi(argv[1]);
-        numberOfArrays = atoi(argv[2]);
-    }
-
-	auto array = (int*)_mm_malloc(sizeof(int*) * numberOfArrays * arraySize, ALLOC_ALIGN);
+    arraySize = atoi(argv[1]);
+    numberOfArrays = atoi(argv[2]);
+    auto array = (int*)_mm_malloc(sizeof(int*) * numberOfArrays * arraySize, ALLOC_ALIGN);
     
     for(int arrayCounter = 0; arrayCounter < numberOfArrays; arrayCounter++)
     {
