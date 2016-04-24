@@ -37,8 +37,8 @@ Complex::Complex(float real, float imaginary) :
 
 float Complex::BoundedOrbit(Complex *startingPoint, float bound, int bailout)
 {
-	Complex multiply = startingPoint->multiply(*startingPoint);
-	Complex z = this->add(multiply);
+	auto multiply = startingPoint->multiply(*startingPoint);
+	auto z = this->add(multiply);
 	float returnValue;
 	for (int k = 0 ; k < bailout; ++k) {
 		if (z.length() > bound)
