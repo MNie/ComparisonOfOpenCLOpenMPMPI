@@ -1,6 +1,5 @@
 *.make
 .idea/
 *.run
-*.png
 *.jpg
 *.jpeg
