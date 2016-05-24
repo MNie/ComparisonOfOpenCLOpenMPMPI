@@ -43,6 +43,9 @@ complement the essence of this project, were also proposed.</p>
 <h3>
 <a id="problem-1st-large-number-of-simple-computations-mandelbrot-set" class="anchor" href="#problem-1st-large-number-of-simple-computations-mandelbrot-set" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problem 1st 'Large number of simple computations' Mandelbrot set</h3>
 
+<p>The first algorithm, for which MPI, OpenMP, OpenCL technologies were compared was Mandelbrot algorithm. 
+As we mentioned earlier. In the description and clarifications were taken into account the execution times of the entire program, including its components individually to the described technology.</p>
+
 <h2>
 <a id="mpi" class="anchor" href="#mpi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MPI</h2>
 
@@ -57,6 +60,12 @@ complement the essence of this project, were also proposed.</p>
 <a id="opencl" class="anchor" href="#opencl" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OpenCL</h2>
 
 <p><img src="https://raw.githubusercontent.com/MNie/ComparisonOfOpenCLOpenMPMPI/17b88f628206a0b1c4984c4fcb53bda83067d425/results/Mandelbrot_OpenCL.png" alt="Mandelbrot set, OpenCL Implementation"></p>
+
+<p>Due to the characteristics of the present discussion, that a large intensity calculations in comparison with other algorithms as implemented the best results in terms of performance have been obtained for OpenCL. This is due to the described fact that implementation of this technology rather than run the specified number of threads defined as the global size, allocates tasks to the existing 236 units working. 
+As a result, the effect marginalized working thread context switch, as in the case of OpenMP technology. The effect is even greater in the case of MPI, which not only context is switched, but also the processes. It should be noted that the small size of the problems appears to be the best MPI. This is due to model communication between the host and the Xeon Phi coprocessor, wherein the main process communicates with each of the other nodes separately, which causes the natural overlap of computation and data transfer. 
+This is compounded by uneven distribution of calculations for static allocation of tasks to the problem Mandelbrot. 
+In other technologies, communication occurs only after all calculations on the coprocessor.
+Taking into account all the aspects of it can be concluded that for the problem of high intensity calculations, the technology OpenCL is the most optimal.</p>
 
 <h3>
 <a id="problem-2nd-calculations-on-extensive-data-genetic-algorithm" class="anchor" href="#problem-2nd-calculations-on-extensive-data-genetic-algorithm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problem 2nd 'Calculations on extensive data' Genetic algorithm</h3>
