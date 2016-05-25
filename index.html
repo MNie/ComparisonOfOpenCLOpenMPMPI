@@ -70,6 +70,8 @@ Taking into account all the aspects of it can be concluded that for the problem 
 <h3>
 <a id="problem-2nd-calculations-on-extensive-data-genetic-algorithm" class="anchor" href="#problem-2nd-calculations-on-extensive-data-genetic-algorithm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problem 2nd 'Calculations on extensive data' Genetic algorithm</h3>
 
+<p>The second compared program was a genetic algorithm. As with other implementation, here also we are taken into account mainly the total execution time of the program, which was created by the following characteristics.</p>
+
 <h2>
 <a id="mpi-1" class="anchor" href="#mpi-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MPI</h2>
 
@@ -85,8 +87,12 @@ Taking into account all the aspects of it can be concluded that for the problem 
 
 <p><img src="https://raw.githubusercontent.com/MNie/ComparisonOfOpenCLOpenMPMPI/17b88f628206a0b1c4984c4fcb53bda83067d425/results/Genetic_OpenCL.png" alt="Genetic algorithm, OpenCL Implementation"></p>
 
+<p>In the analysis of execution times environment initialization time was omitted due to the high complexity of the implemented solutions, and what follows, a long time calculations carried out within the framework of the algorithm. These comparisons were taken for the missed cache line to both levels L1 and L2. After the results obtained in the VTune, it was found that the best ratio between the memories misses at the levels L1 and L2 have OpenCL technology where this ratio was about 1 to 5, in OpenMP and MPI was at the level of 1 to 3. In comparison to Mandelbrot algorithm further enhances the technology OpenCL advantage of the greater complexity of the calculations, as well as larger data size. In contrast to the previously described Mandelbrot algorithm in this case OpenCL technology, it was also best for a small number of processes and the small size of the problem. This is due to the previously described fact that it uses the Intel Threading Building Blocks. However, for a large size of the problem and a small number of threads the best technology was OpenMP.</p>
+
 <h3>
 <a id="problem-3rd-high-intensity-of-communication-clientserver-app" class="anchor" href="#problem-3rd-high-intensity-of-communication-clientserver-app" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problem 3rd 'High intensity of communication' ClientServer app</h3>
+
+<p>The last compared program is an application which focused on intensive communication between the host and the coprocessor. At the outset, it is worth noting that the analysis was based, as with other algorithms, at the time of the entire algorithm, along with communication. It should also be noted that the model used in OpenMP implementation is slightly different from that used in other technologies.</p>
 
 <h2>
 <a id="mpi-2" class="anchor" href="#mpi-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MPI</h2>
@@ -102,6 +108,8 @@ Taking into account all the aspects of it can be concluded that for the problem 
 <a id="opencl-2" class="anchor" href="#opencl-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OpenCL</h2>
 
 <p><img src="https://raw.githubusercontent.com/MNie/ComparisonOfOpenCLOpenMPMPI/17b88f628206a0b1c4984c4fcb53bda83067d425/results/ClientServer_OpenCL.png" alt="Client server app, OpenCL Implementation"></p>
+
+<p>From the analysis of the measurements it came out that the Message Passing Interface technology proved to be the best, because of the attitude of communication between separate processes, which is important in the test applied to the problem of the division of labor. At one time a single process is responsible for one request while other technologies are focused on communication of low bulk granulation. Therefore, assuming a different model, which demands calculation in groups of 16 arrays, especially technology OpenCL could gain because of strong attitudes on the use of technology vectorization. It is worth noting that for a small problem the best technology is OpenMP. However, due to the use of the different model, it omitted mention of her in relation to the MPI.</p>
 
 <h3>
 <a id="additional-calculation-with-different-settings-for-mic_kmp_affinity-variable" class="anchor" href="#additional-calculation-with-different-settings-for-mic_kmp_affinity-variable" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Additional calculation with different settings for MIC_KMP_AFFINITY variable</h3>
